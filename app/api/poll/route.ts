@@ -14,7 +14,7 @@ export async function GET(req: Request) {
     }
 
     const key = `reply:${sessionId}`
-    const popped = await redis.lpop<string>(key, 20)
+    const popped = await redis.lpop<string[]>(key, 20)
     const messages: string[] = popped || []
 
     return NextResponse.json({ messages })
